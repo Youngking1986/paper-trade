@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Polymarket Sniper Bot</title>
+    <script src="https://cdn.socket.io/4.5.4/socket.io.min.js"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🎯 Polymarket Sniper Bot</h1>
+            <div class="mode-badge">📄 PAPER TRADING</div>
+        </div>
+        <div class="dashboard">
+            <div class="card">
+                <h2><span class="status-indicator disconnected" id="statusIndicator"></span> Connection</h2>
+                <div id="connectionStatus">Not connected</div>
+            </div>
+            <div class="card">
+                <h2>📊 Stats</h2>
+                <div class="stats-grid">
+                    <div class="stat-box"><div class="stat-value" id="totalSnipes">0</div><div>Snipes</div></div>
+                    <div class="stat-box"><div class="stat-value" id="successRate">0%</div><div>Success</div></div>
+                    <div class="stat-box"><div class="stat-value" id="profitLoss">$0.00</div><div>P&L</div></div>
+                </div>
+            </div>
+            <div class="card">
+                <h2>📈 Market</h2>
+                <div id="marketInfo">No active market</div>
+            </div>
+            <div class="card timer-card">
+                <div>Time to Close</div>
+                <div class="timer-display" id="timerDisplay">--:--</div>
+                <div id="timerStatus">Waiting...</div>
+            </div>
+            <div class="card" style="grid-column: 1 / -1;">
+                <h2>📖 Orderbook</h2>
+                <div class="orderbook-container" id="orderbookContainer">No data</div>
+            </div>
+            <div class="card activity-log">
+                <h2>📝 Activity Log</h2>
+                <div id="activityLog"><div class="log-entry"><span>--:--:--</span> <span>Ready</span></div></div>
+            </div>
+            <div class="controls">
+                <button class="btn btn-primary" id="startBtn" onclick="startBot()">▶️ Start</button>
+                <button class="btn btn-danger" id="stopBtn" onclick="stopBot()" disabled>⏹️ Stop</button>
+            </div>
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,5 @@
+flask
+flask-socketio
+aiohttp
+websockets
+python-dotenv
